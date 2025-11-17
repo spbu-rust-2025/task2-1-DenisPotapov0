@@ -1,0 +1,38 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: cargo build --verbose
+      - name: Tests
+        run: cargo test --verbose
+      - name: Test1
+        run: if [ "$(echo -e "akasrjbbaacaabbkamasd" | cargo run)" = "bbaacaabb" ]; then echo "TEST 1 PASSED"; else echo "TEST 1 FAILED"; exit 105; fi
+      - name: Test2
+        run: if [ "$(echo -e "if i work then everything will be brilliant we keep the bar even if the conversation is not about statics" | cargo run)" = "illi" ]; then echo "TEST 2 PASSED"; else echo "TEST 2 FAILED"; exit 105; fi
+      - name: Test3
+        run: if [ "$(echo -e "abba6996abba" | cargo run)" = "abba6996abba" ]; then echo "TEST 3 PASSED"; else echo "TEST 3 FAILED"; exit 105; fi
+      - name: Test4
+        run: if [ "$(echo -e "a" | cargo run)" = "a" ]; then echo "TEST 4 PASSED"; else echo "TEST 4 FAILED"; exit 105; fi
+      - name: Test5
+        run: if [ "$(echo -e "aa" | cargo run)" = "aa" ]; then echo "TEST 5 PASSED"; else echo "TEST 5 FAILED"; exit 105; fi
+      - name: Test6
+        run: if [ "$(echo -e "aba" | cargo run)" = "aba" ]; then echo "TEST 6 PASSED"; else echo "TEST 6 FAILED"; exit 105; fi
+      - name: Test7
+        run: if [ "$(echo -e "ab" | cargo run)" = "a" ] || [ "$(echo -e "ab" | cargo run)" = "b" ]; then echo "TEST 7 PASSED"; else echo "TEST 7 FAILED"; exit 105; fi
+      - name: Test8
+        run: if [ "$(echo -e "yadro" | cargo run)" = "y" ] || [ "$(echo -e "yadro" | cargo run)" = "a" ] || [ "$(echo -e "yadro" | cargo run)" = "d" ] || [ "$(echo -e "yadro" | cargo run)" = "r" ] || [ "$(echo -e "yadro" | cargo run)" = "o" ]; then echo "TEST 8 PASSED"; else echo "TEST 8 FAILED"; exit 105; fi
+      - name: Test9
+        run: if [ "$(echo -e "gdhrshefauiwhriadhguisaetjuoqetgosiuhtuiweieryjthyserfhdtraw4fruheguierchybcrhgvydjfvgfuihcrntgvwurvtgyc4uyt75y5746y8346c72x87wy7x3746j7yc3ui4ux5uiwjrctiuc4u6iotcu4yuihdvrfjvgbiyuw54vtq438ty0yw084m0dy8w8s345034ytvegj0ygu6yeuabbbbbbbbbbbbbaaythcyg589u0tvy088ugh6wd0u839mf5a4huatiozuzyuzyzyz6tt7sr65s65r34ty87y7ntby4b8y3v8ucu30v4cu034yvnrc9rtum49yuyy5nunmk78kn7ubj6uhl6pylplgtpptoy0956i496846934u6983u6348itureiytugdfghue5y6893io54rg" | cargo run)" = "abbbbbbbbbbbbba" ]; then echo "TEST 9 PASSED"; else echo "TEST 9 FAILED"; exit 105; fi
+      - name: TestEmptyString
+        run: if [ "$(echo -e "" | cargo run)" = "" ]; then echo "TEST EMPTY STRING PASSED"; else echo "TEST EMPTY STRING FAILED"; exit 105; fi
